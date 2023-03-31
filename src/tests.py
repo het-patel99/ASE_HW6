@@ -18,7 +18,7 @@ import discretization
 
 def test_csv():
     if(csv_content(the["file"]) == 8 * 399):
-        print(" Test csv : successful \n")
+        print("test_csv : successful \n")
     return csv_content(the["file"]) == 8 * 399
 
 def test_nums():
@@ -26,7 +26,7 @@ def test_nums():
     lst = [1,1,1,1,2,2,3]
     for a in lst:
         val.add(a)
-    print("test_nums: PASS\n")
+    print("test_nums: successful\n")
     return 11/7 == val.mid() and 0.787 == utils.rnd(val.div(),3)
     
 def test_sym():
@@ -34,19 +34,19 @@ def test_sym():
     sym1 = Sym()
     for x in value:
         sym1.add(x)
-    print("test_syms: PASS\n")
+    print("test_syms: successful\n")
     return "a"==sym1.mid() and 1.379 == utils.rnd(sym1.div(),3)
 
 def test_the():
     print("The results of test_the function:")
     print(str(the))
-    print("test_the: PASS\n")
+    print("test_the: successful\n")
     return True
 
 def test_data():
     data = Data().read_file(the["file"])
     col = data.cols.x[1].col
-    print("Test data : successful \n")
+    print("test_data : successful \n")
     print(col.lo,col.hi, query.mid(col), query.div(col))
     print(query.stats(data))
     return True
@@ -54,7 +54,7 @@ def test_data():
 def test_clone():
     data = Data().read_file(the["file"])
     data2 = data.clone(data,data.rows)
-    print("Test clone : successful \n")
+    print("test_clone : successful \n")
     utils.oo(query.stats(data))
     utils.oo(query.stats(data2))
     return True
@@ -63,7 +63,7 @@ def test_half():
     data = Data().read_file(the["file"])
 
     left, right, A, B, c, evals = cluster.half(data)
-    print("Test half : successful \n")
+    print("test_half : successful \n")
     print(len(left), len(right), len(data.rows))
     print(utils.o(A), c)
     print(utils.o(B))
@@ -89,7 +89,7 @@ def test_cliffs():
         diff = utils.cliffs_delta(t1, t3)
         print(">", utils.rnd(j), diff)
         j *= 1.025
-    print("Test cliff : successful \n")
+    print("test_cliffs : successful \n")
     return True
 
 def test_dist():
@@ -97,13 +97,13 @@ def test_dist():
     num = Num()
     for row in data.rows:
         update.add(num, query.dist(data, row, data.rows[1]))
-    print("Test dist : successful \n")
+    print("test_dist : successful \n")
     print({"lo": num.lo, "hi": num.hi, "mid": utils.rnd(query.mid(num)), "div": utils.rnd(num.n)})
     return True
 
 def test_tree():
     data = Data().read_file(the["file"])
-    print("Test tree : successful \n")
+    print("test_tree : successful \n")
     cluster.show_tree(cluster.tree(data))
 
     return True
@@ -127,7 +127,7 @@ def test_sway():
 def test_bins():
     data = Data().read_file(the["file"])
     best, rest, evals = optimize.sway(data)
-    print("Test bin : successful")
+    print("test_bins : successful")
     print("all","","","",utils.o({"best":len(best.rows), "rest": len(rest.rows)}))
     for k,t in enumerate(discretization.bins(data.cols.x, {"best": best.rows, "rest": rest.rows})):
         for _, range in enumerate(t):
@@ -139,16 +139,13 @@ def test_bins():
 def test_explain():
     data = data_explain.New_Data(the["file"])
     best, rest , evals = optimize.sway(data)
-
     rule, most= discretization.xpln(data,best,rest)
-    print("\n-----------\n\nexplain=", discretization.showRule(rule))
     data1= data_explain.New_Data(data,discretization.selects(rule,data.rows))
-    print("all               ",query.stats(data),query.stats(data,query.div))
-    print(f"sway with {evals} evals",query.stats(best),query.stats(best,query.div))
-    print(f"xpln on {evals} evals",query.stats(data1),query.stats(data1,query.div))
     top, _ = query.betters(data, len(best.rows))
-    # top = Data1(data,top)
-    # print(f"sort with {len(data.rows)} evals", Query.stats(top),Query.stats(top,Query.div))
-
-    print("\nTest explain : successful \n")
+    print("calculation of showrule", discretization.showRule(rule))
+    print("All --- ",query.stats(data),query.stats(data,query.div))
+    print(f"Sway with {evals} evals",query.stats(best),query.stats(best,query.div))
+    print(f"Xpln on {evals} evals",query.stats(data1),query.stats(data1,query.div))
+    
+    print("\n test_explain : successful \n")
     return True 
