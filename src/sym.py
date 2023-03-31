@@ -9,7 +9,7 @@ class Sym:
     def __init__(self, at = 0, txt = ""):
         self.at = at
         self.txt = txt
-
+        self.isSym = True
         self.n = 0
         self.has = {}
         self.most = 0

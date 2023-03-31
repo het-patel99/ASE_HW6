@@ -12,7 +12,8 @@ class Num():
         self.n = 0
         self.mu = 0
         self.m2 = 0
-
+        self.ok = True
+        self.has = []
         self.lo = float('inf')
         self.hi = float('-inf')
 
