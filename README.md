@@ -5,11 +5,11 @@
 ![GitHub](https://img.shields.io/github/license/het-patel99/ASE_HW6)
 ![GitHub issues](https://img.shields.io/github/issues/het-patel99/ASE_HW6)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/het-patel99/ASE_HW6)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/katmit/ASE_HW2/unit_test.yml)
-![github workflow](https://github.com/katmit/ASE_HW2/actions/workflows/unit_test.yml/badge.svg)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/het-patel99/ASE_HW6/unit_test.yml)
+![github workflow](https://github.com/het-patel99/ASE_HW6/actions/workflows/unit_test.yml/badge.svg)
 
 
-# How to Run??
+# How to Run??s
 1. go to src/ directory and then python3 main.py -g
 2. To run the tests run pytest tests.py from src directory
 
